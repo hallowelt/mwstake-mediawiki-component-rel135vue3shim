@@ -18,3 +18,5 @@ See also [`mwstake/mediawiki-componentloader`](https://github.com/hallowelt/mwst
 ## Only MediaWiki 1.35
 
 This component must only be used in MW 1.35 context. Make sure it is used in a very isolated context (e.g. on a SpecialPage). There is some risk of VueJS version collision!
+
+The code located in `resources/` is basically just a copy of the files that are currently in `wikimedia/mediawiki@wmf/1.38.0-wmf.22`. Same is true for `boostrap.php`, which mimics `incldues/Resources.php` from that version. Some minor adjustments were made to make it compatible to `wikimedia/mediawiki@REL1_35` the ResourceLoader implementation.
