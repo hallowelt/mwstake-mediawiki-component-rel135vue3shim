@@ -25,7 +25,7 @@ MWStake\MediaWiki\ComponentLoader\Bootstrapper::getInstance()
 							'resources/lib/vue/vue.global.prod.js';
 						// The file shipped by Vue does var Vue = ...;, but doesn't export it
 						// Add module.exports = Vue; programmatically
-						return file_get_contents(__DIR__ . "/$file" ) .
+						return '/*@nomin*/' ."\n" . file_get_contents( __DIR__ . "/$file" ) .
 							';module.exports=Vue;';
 					},
 					'versionCallback' => static function ( ResourceLoaderContext $context, Config $config ) {
@@ -66,7 +66,7 @@ MWStake\MediaWiki\ComponentLoader\Bootstrapper::getInstance()
 							'resources/lib/vuex/vuex.global.prod.js';
 						// The file shipped by Vuex does var Vuex = ...;, but doesn't export it
 						// Add module.exports = Vuex; programmatically, and import Vue
-						return "var Vue=require('vue');" .
+						return '/*@nomin*/' ."\n" ."var Vue=require('mwstake-vue3shim');" .
 							file_get_contents( __DIR__ . "/$file" ) .
 							';module.exports=Vuex;';
 					},
